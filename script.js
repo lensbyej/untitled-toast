@@ -2,14 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Reveal Elements on Scroll
     const observerOptions = {
-        threshold: 0.1 // Trigger when 10% of the element is visible
+        threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Optional: Stop observing once it has faded in
                 observer.unobserve(entry.target);
             }
         });
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll('.fade-in');
     elements.forEach(el => observer.observe(el));
     
-    // 2. Smooth Scrolling for Links
+    // 2. Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
